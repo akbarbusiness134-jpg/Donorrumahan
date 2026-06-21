@@ -45,7 +45,7 @@ function AdminDatabase() {
       <div className="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
         <div>
           <h1 className="text-2xl font-bold tracking-tight">Pengaturan Database</h1>
-          <p className="text-muted-foreground">Hubungkan website ini ke Supabase Cloud Storage.</p>
+          <p className="text-muted-foreground">Hubungkan aplikasi website ini ke Supabase Cloud Storage.</p>
         </div>
         <Button onClick={handleSave} disabled={isSaving}>
           <Save className="mr-2 h-4 w-4" />
