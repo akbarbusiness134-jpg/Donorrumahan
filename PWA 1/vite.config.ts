@@ -20,10 +20,5 @@ export default defineConfig({
         ignored: ["**/.netlify/**"],
       },
     },
-    build: {
-      rollupOptions: {
-        external: ["tslib"],
-      },
-    },
   },
 });
