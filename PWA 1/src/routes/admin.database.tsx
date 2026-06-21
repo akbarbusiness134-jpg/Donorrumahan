@@ -6,6 +6,7 @@ import { Database, Save, CheckCircle2 } from "lucide-react";
 import { useState, useEffect } from "react";
 import { toast } from "sonner";
 
+// Trigger fresh build after config update
 export const Route = createFileRoute("/admin/database")({
   component: AdminDatabase,
 });
