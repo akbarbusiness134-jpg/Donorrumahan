@@ -1,0 +1,371 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-urgent: var(--urgent);
+  --color-urgent-foreground: var(--urgent-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ink: var(--ink);
+  --color-paper: var(--paper);
+  --font-display: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Lexend", ui-sans-serif, system-ui, sans-serif;
+  --shadow-card: 0 1px 2px rgba(15, 15, 15, 0.04), 0 8px 24px -12px rgba(15, 15, 15, 0.08);
+  --shadow-urgent: 0 1px 2px rgba(190, 18, 60, 0.08), 0 12px 30px -14px rgba(190, 18, 60, 0.35);
+}
+
+:root {
+  --radius: 0.875rem;
+  --paper: oklch(0.99 0.004 60);
+  --ink: oklch(0.16 0.01 30);
+  --background: oklch(0.99 0.004 60);
+  --foreground: oklch(0.16 0.01 30);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.16 0.01 30);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.16 0.01 30);
+  --primary: oklch(0.52 0.22 27);
+  --primary-foreground: oklch(0.99 0.004 60);
+  --secondary: oklch(0.96 0.006 60);
+  --secondary-foreground: oklch(0.16 0.01 30);
+  --muted: oklch(0.96 0.006 60);
+  --muted-foreground: oklch(0.48 0.012 40);
+  --accent: oklch(0.94 0.02 30);
+  --accent-foreground: oklch(0.2 0.05 30);
+  --destructive: oklch(0.55 0.22 27);
+  --destructive-foreground: oklch(0.99 0.004 60);
+  --urgent: oklch(0.5 0.24 27);
+  --urgent-foreground: oklch(0.99 0.004 60);
+  --border: oklch(0.9 0.008 50);
+  --input: oklch(0.9 0.008 50);
+  --ring: oklch(0.52 0.22 27);
+}
+
+.dark {
+  --background: oklch(0.14 0.01 30);
+  --foreground: oklch(0.97 0.004 60);
+  --card: oklch(0.18 0.012 30);
+  --card-foreground: oklch(0.97 0.004 60);
+  --popover: oklch(0.18 0.012 30);
+  --popover-foreground: oklch(0.97 0.004 60);
+  --primary: oklch(0.62 0.22 27);
+  --primary-foreground: oklch(0.14 0.01 30);
+  --secondary: oklch(0.24 0.012 30);
+  --secondary-foreground: oklch(0.97 0.004 60);
+  --muted: oklch(0.24 0.012 30);
+  --muted-foreground: oklch(0.7 0.012 40);
+  --accent: oklch(0.28 0.04 30);
+  --accent-foreground: oklch(0.97 0.004 60);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.62 0.22 27);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+    /* Firefox scrollbar */
+    scrollbar-width: thin;
+    scrollbar-color: color-mix(in oklch, var(--color-foreground) 20%, transparent) transparent;
+  }
+
+  /* Efek Sentuhan Global untuk semua elemen yang bisa diklik */
+  a, button, [role="button"], .cursor-pointer {
+    @apply active:scale-[0.97] transition-transform duration-200;
+  }
+
+  /* Webkit modern scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: color-mix(in oklch, var(--color-foreground) 20%, transparent);
+    border-radius: 10px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: color-mix(in oklch, var(--color-foreground) 40%, transparent);
+  }
+
+  html,
+  body {
+    font-family: var(--font-sans);
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-feature-settings: "ss01", "cv11";
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+  }
+
+  body {
+    min-height: 100vh;
+  }
+
+  h1,
+  h2,
+  h3,
+  .font-display {
+    font-family: var(--font-display);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+  }
+}
+
+@utility glass-card {
+  background: color-mix(in oklch, var(--color-card) 75%, transparent);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--color-border);
+  box-shadow: 0 8px 32px -4px rgba(0, 0, 0, 0.05);
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slide-up {
+  animation: slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Hero section always full viewport on initial load */
+#beranda {
+  height: 100vh !important;
+  min-height: 100vh !important;
+  height: 100svh !important;
+  /* Use stable small viewport height on mobile to prevent jumpy scroll and image resizing */
+  min-height: 100svh !important;
+}
+
+@utility no-scrollbar {
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@utility scrollbar-thin {
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+
+  &::-webkit-scrollbar {
+    height: 8px;
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--border);
+    border-radius: 4px;
+  }
+
+  &:hover::-webkit-scrollbar-thumb {
+    background-color: hsl(var(--primary) / 0.4);
+  }
+}
+
+/* Frame styling removed as per request */
+
+/* Landscape orientation fix for hero section - mobile only */
+/* Pushes hero content down to avoid overlap with header and announcement bar */
+@media (max-width: 767px) and (orientation: landscape) {
+  section#beranda .absolute.inset-0.flex {
+    padding-top: 40vh !important;
+    justify-content: flex-start !important;
+  }
+}
+
+/* Gallery Lightbox Animations */
+@keyframes zoomIn {
+  from {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-zoom-in {
+  animation: zoomIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+/* Mobile Menu Animations */
+@keyframes slideDownFade {
+  from {
+    opacity: 0;
+    transform: translateY(-1rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animate-slide-down-fade {
+  animation: slideDownFade 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes slideRightFade {
+  from {
+    opacity: 0;
+    transform: translateX(-1rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+.animate-slide-right-fade {
+  opacity: 0;
+  animation: slideRightFade 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes slideUpFade {
+  from {
+    opacity: 0;
+    transform: translateY(1rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animate-slide-up-fade {
+  opacity: 0;
+  animation: slideUpFade 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes slideUpFullscreen {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+.animate-slide-up-fullscreen {
+  animation: slideUpFullscreen 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Typography/Prose Styles for Articles and Editor */
+.prose {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-word;
+}
+
+.prose h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  color: var(--ink);
+}
+
+.prose h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+  color: var(--ink);
+}
+
+.prose ul {
+  list-style-type: disc;
+  padding-left: 1.5rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.prose ol {
+  list-style-type: decimal;
+  padding-left: 1.5rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.prose li {
+  margin-bottom: 0.5rem;
+}
+
+.prose b, .prose strong {
+  font-weight: 700;
+}
+
+.prose i, .prose em {
+  font-style: italic;
+}
+
+/* Ensure WYSIWYG figures and images behave on mobile */
+@media (max-width: 767px) {
+  .prose figure {
+    float: none !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    margin-bottom: 1.5rem !important;
+    display: block !important;
+  }
+  .prose img {
+    max-width: 100% !important;
+    height: auto !important;
+    width: 100% !important;
+  }
+}
